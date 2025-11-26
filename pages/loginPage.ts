@@ -1,22 +1,40 @@
-import {Page} from "@playwright/test"
-export default class LoginPage {
+import { Page, Locator } from "@playwright/test";
 
-     constructor(public page: Page){}
 
-     async enterEmailAdd(emailadd: string){
-        await this.page.locator("#input-email").fill(emailadd);
+
+
+export class LoginPage{
+
+    private readonly userName:Locator;
+    private readonly password:Locator;
+    private readonly loginBtn:Locator;
+   
+    constructor(public page:Page){
+
+        this.userName = page.locator("#username");
+        this.password = page.locator("#password");
+        this.loginBtn = page.locator("#login");
+    }
+
+
+    async LoginPage_ClickLogin(){
+
+     try{
+
+        await this.page.getByRole('textbox', {name:"Email address"}).click();
+        await this.page.getByRole('textbox', {name:"Email address"}).fill("qaAutomationTechTask@grr.la");
+        await this.page.getByRole('textbox',{name: "password"}).click();
+        await this.page.getByRole('textbox', {name: "password"}).fill("A1234567890-");
+        await this.page.getByRole('button', {name: "Login"}).click();
+
+     }catch(error){
+
+        console.error('Invalid credentials', error);
      }
 
-     async enterEpassword(epassword : string){
-        await this.page.locator("#input-password").fill(epassword);
-     }
 
-     async clickLoginBtn(){
-        await this.page.click("input[value='Login']");
-     }
 
-    
-
+    }
 
 
 
