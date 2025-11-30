@@ -17,7 +17,7 @@ export interface EmployeeData {
   jobTitle: string;
 }
 
-export class EmployeeePage {
+export class EmployeePage {
   private readonly page: Page;
   private readonly grid: Locator;
   private readonly addEmployeeBtn: Locator;

@@ -4,7 +4,7 @@ import { LoginPage } from '../pages/loginPage';
 import { DashBoardPage } from '../pages/dashboardPage';
 import { EmployeeHubPage } from '../pages/employeeHubPage';
 import data from '../test_data/qa/empDetails.json';
-import { EmployeeePage, type EmployeeData } from '../pages/employeePage';
+import { EmployeePage, type EmployeeData } from '../pages/employeePage';
 
 
 type TestData = [
@@ -21,7 +21,7 @@ const homepage = new HomePage(page);
 const loginpage = new LoginPage(page);
 const dashboardpage = new DashBoardPage(page);
 const employeehubpage = new EmployeeHubPage(page);
-const employeepage = new EmployeeesPage(page);
+const employeepage = new EmployeePage(page);
 
 
 
@@ -32,10 +32,8 @@ await homepage.click_HomepageLogin();
 await loginpage.LoginPage_ClickLogin();
 await dashboardpage.click_EmpLink();
 await employeehubpage.addEmployee();
-await employeepage.inputDataDetails();
 await employeepage.addEmployee(employee1);
-await employeepage.navigateEmployees();
-await employeepage.expectEmployeeVisible([employee1]);
+await employeepage.expectEmployeeVisible(employee1);
 
 
 
